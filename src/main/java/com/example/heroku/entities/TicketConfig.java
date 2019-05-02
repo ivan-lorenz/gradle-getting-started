@@ -9,7 +9,6 @@ public class TicketConfig {
     @GeneratedValue(strategy= GenerationType.AUTO)
     private long id;
     @Enumerated(EnumType.STRING)
-    @Column(unique = true)
     private TicketType type;
     private double price;
     private long quantity;
