@@ -11,7 +11,9 @@ public class Event {
     private long id;
     private String name;
     private String description;
+    @Temporal(TemporalType.TIMESTAMP)
     private Date start;
+    @Enumerated(EnumType.STRING)
     private Category category;
     @ManyToOne
     @JoinColumn(name = "venue_id")

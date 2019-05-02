@@ -17,8 +17,11 @@
 package com.example.heroku;
 
 import com.example.heroku.dtos.EventDTO;
+import com.example.heroku.dtos.EventsDTO;
 import com.example.heroku.dtos.TicketConfigDTO;
+import com.example.heroku.dtos.VenueDTO;
 import com.example.heroku.entities.Event;
+import com.example.heroku.entities.PriceCurreny;
 import com.example.heroku.entities.TicketConfig;
 import com.example.heroku.services.EventService;
 import com.example.heroku.services.TicketConfigService;
@@ -29,7 +32,9 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 
 import java.util.HashMap;
 import java.util.List;
@@ -61,8 +66,11 @@ public class HerokuApplication {
   @RequestMapping("/events/{cityCode}")
   ResponseEntity events(@PathVariable String cityCode) {
     List<Event> events = eventService.findByCityCode(cityCode);
+    return ok(new EventsDTO(convertEventDTOs(events)));
+  }
 
-    List<EventDTO> body = events.stream()
+  private List<EventDTO> convertEventDTOs(List<Event> events) {
+    return events.stream()
             .map(event -> {
 
               List<TicketConfig> ticketConfigs = ticketConfigService.findByEventId(event.getId());
@@ -70,13 +78,27 @@ public class HerokuApplication {
               List<TicketConfigDTO> ticketConfigDTOS = ticketConfigs.stream().map(ticketConfig -> {
                 long soldTickets = ticketService.countByTicketConfig(event.getId(), ticketConfig.getType());
                 long totalTickets = ticketConfig.getQuantity();
-                return new TicketConfigDTO(ticketConfig.getId(), ticketConfig.getType(), ticketConfig.getPrice(), totalTickets - soldTickets);
+                return new TicketConfigDTO(ticketConfig.getId(),
+                        ticketConfig.getType(),
+                        PriceCurreny.convertToEuros(ticketConfig.getPrice()),
+                        totalTickets - soldTickets);
 
               }).collect(Collectors.toList());
 
-              return new EventDTO(event, ticketConfigDTOS);
+              return new EventDTO(event.getId(),
+                      event.getName(),
+                      event.getStart(),
+                      event.getCategory(),
+                      VenueDTO.from(event.getVenue()),
+                      ticketConfigDTOS
+                      );
+
             }).collect(Collectors.toList());
-    return ok(body);
+  }
+
+  @RequestMapping(value = "/events/{event_id}/tickets", method = RequestMethod.POST)
+  ResponseEntity events(@PathVariable int eventId) {
+    return null;
   }
 
 

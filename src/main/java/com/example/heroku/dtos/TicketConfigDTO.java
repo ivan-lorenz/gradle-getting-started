@@ -6,10 +6,10 @@ public class TicketConfigDTO {
 
     private final long id;
     private final TicketType type;
-    private final double price;
+    private final String price;
     private final long remaining;
 
-    public TicketConfigDTO(long id, TicketType type, double price, long remaining) {
+    public TicketConfigDTO(long id, TicketType type, String price, long remaining) {
         this.id = id;
         this.type = type;
         this.price = price;
@@ -24,11 +24,12 @@ public class TicketConfigDTO {
         return type;
     }
 
-    public double getPrice() {
+    public String getPrice() {
         return price;
     }
 
     public long getRemaining() {
         return remaining;
     }
+
 }
