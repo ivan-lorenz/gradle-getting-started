@@ -87,7 +87,7 @@ public class HerokuApplication {
                       event.getCategory(),
                       VenueDTO.from(event.getVenue()),
                       ticketConfigDTOS,
-                      event.getUrlImage());
+                      event.getUrlImage(), description);
 
             }).collect(Collectors.toList());
   }

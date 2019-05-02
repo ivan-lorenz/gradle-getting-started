@@ -16,8 +16,9 @@ public class EventDTO {
     private final VenueDTO venue;
     private final List<TicketConfigDTO> ticketConfig;
     private final String urlImage;
+    private final String description;
 
-    public EventDTO(long id, String name, Date start, Category category, VenueDTO venue, List<TicketConfigDTO> ticketConfig, String urlImage) {
+    public EventDTO(long id, String name, Date start, Category category, VenueDTO venue, List<TicketConfigDTO> ticketConfig, String urlImage, String description) {
         this.id = id;
         this.name = name;
         this.start = start;
@@ -25,6 +26,7 @@ public class EventDTO {
         this.venue = venue;
         this.ticketConfig = ticketConfig;
         this.urlImage = urlImage;
+        this.description = description;
     }
 
     public long getId() {
@@ -53,5 +55,9 @@ public class EventDTO {
 
     public String getUrlImage() {
         return urlImage;
+    }
+
+    public String getDescription() {
+        return description;
     }
 }
