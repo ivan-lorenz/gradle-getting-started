@@ -22,7 +22,7 @@ public class TicketDTO {
         return countryCode;
     }
 
-    public String getCurrency() {
+    public String getCurrencyCode() {
         return currencyCode;
     }
 
