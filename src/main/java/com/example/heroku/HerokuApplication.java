@@ -35,11 +35,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import static org.springframework.http.ResponseEntity.ok;
 
@@ -89,8 +86,8 @@ public class HerokuApplication {
                       event.getStart(),
                       event.getCategory(),
                       VenueDTO.from(event.getVenue()),
-                      ticketConfigDTOS
-                      );
+                      ticketConfigDTOS,
+                      event.getUrlImage());
 
             }).collect(Collectors.toList());
   }

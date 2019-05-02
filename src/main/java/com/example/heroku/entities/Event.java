@@ -19,6 +19,8 @@ public class Event {
     @JoinColumn(name = "venue_id")
     private Venue venue;
 
+    private String urlImage;
+
     public long getId() {
         return id;
     }
@@ -67,6 +69,13 @@ public class Event {
         this.venue = venue;
     }
 
+    public String getUrlImage() {
+        return urlImage;
+    }
+
+    public void setUrlImage(String urlImage) {
+        this.urlImage = urlImage;
+    }
 
     @Override
     public String toString() {
@@ -77,6 +86,7 @@ public class Event {
                 ", start=" + start +
                 ", category=" + category +
                 ", venue=" + venue +
+                ", urlImage='" + urlImage + '\'' +
                 '}';
     }
 }
