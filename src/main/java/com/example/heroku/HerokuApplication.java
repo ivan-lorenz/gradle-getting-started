@@ -22,6 +22,7 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import static org.springframework.http.ResponseEntity.ok;
@@ -39,9 +40,9 @@ public class HerokuApplication {
   }
 
 
-  @RequestMapping("/events")
-  ResponseEntity events() {
-    return ok(eventService.findAll());
+  @RequestMapping("/events/{cityCode}")
+  ResponseEntity events(@PathVariable String cityCode) {
+    return ok(eventService.findByCityCode(cityCode));
   }
 
 

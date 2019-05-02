@@ -13,7 +13,7 @@ public class EventService {
     @Autowired
     private EventRepository eventRepository;
 
-    public List<Event> findAll() {
-        return eventRepository.findAll();
+    public List<Event> findByCityCode(String cityCode) {
+        return eventRepository.findByCityCode(cityCode);
     }
 }

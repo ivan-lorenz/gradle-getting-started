@@ -1,9 +1,6 @@
 package com.example.heroku.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 @Entity
@@ -14,7 +11,12 @@ public class Event {
     private long id;
     private String name;
     private String description;
-    private Date date;
+    private Date start;
+    private Date end;
+    private Category category;
+    @ManyToOne
+    @JoinColumn(name = "venue_id")
+    private Venue venue;
 
     public long getId() {
         return id;
@@ -40,11 +42,35 @@ public class Event {
         this.description = description;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getStart() {
+        return start;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setStart(Date start) {
+        this.start = start;
+    }
+
+    public Date getEnd() {
+        return end;
+    }
+
+    public void setEnd(Date end) {
+        this.end = end;
+    }
+
+    public Category getCategory() {
+        return category;
+    }
+
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    public Venue getVenue() {
+        return venue;
+    }
+
+    public void setVenue(Venue venue) {
+        this.venue = venue;
     }
 }
