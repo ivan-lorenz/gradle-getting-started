@@ -26,6 +26,7 @@ import com.example.heroku.entities.TicketConfig;
 import com.example.heroku.services.EventService;
 import com.example.heroku.services.TicketConfigService;
 import com.example.heroku.services.TicketService;
+import com.example.heroku.vms.BuyTicket;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -97,8 +98,11 @@ public class HerokuApplication {
   }
 
   @RequestMapping(value = "/events/{event_id}/tickets", method = RequestMethod.POST)
-  ResponseEntity events(@PathVariable int eventId) {
-    return null;
+  ResponseEntity buyTicket(@PathVariable("event_id") long eventId, @RequestBody BuyTicket buyTicket) {
+    System.out.println(eventId);
+    System.out.println(buyTicket);
+
+    return ok().build();
   }
 
 
