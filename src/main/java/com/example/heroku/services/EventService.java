@@ -16,4 +16,8 @@ public class EventService {
     public List<Event> findByCityCode(String cityCode) {
         return eventRepository.findByCityCode(cityCode);
     }
+
+    public Event findById(long eventId) {
+        return eventRepository.findById(eventId).orElse(null);
+    }
 }

@@ -16,12 +16,10 @@
 
 package com.example.heroku;
 
-import com.example.heroku.dtos.EventDTO;
-import com.example.heroku.dtos.EventsDTO;
-import com.example.heroku.dtos.TicketConfigDTO;
-import com.example.heroku.dtos.VenueDTO;
+import com.example.heroku.dtos.*;
 import com.example.heroku.entities.Event;
 import com.example.heroku.entities.PriceCurreny;
+import com.example.heroku.entities.Ticket;
 import com.example.heroku.entities.TicketConfig;
 import com.example.heroku.services.EventService;
 import com.example.heroku.services.TicketConfigService;
@@ -99,10 +97,12 @@ public class HerokuApplication {
 
   @RequestMapping(value = "/events/{event_id}/tickets", method = RequestMethod.POST)
   ResponseEntity buyTicket(@PathVariable("event_id") long eventId, @RequestBody BuyTicket buyTicket) {
-    System.out.println(eventId);
-    System.out.println(buyTicket);
 
-    return ok().build();
+    Ticket ticket = ticketService.createTicket(buyTicket.getCustomerId(), eventId, buyTicket.getType());
+
+    TicketDTO ticketDTO = new TicketDTO(ticket.getId(), "ES","Euro", 100.0);
+
+    return ok(ticketDTO);
   }
 
 

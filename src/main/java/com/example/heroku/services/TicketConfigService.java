@@ -19,4 +19,8 @@ public class TicketConfigService {
     public List<TicketConfig> findByEventId(long eventId) {
         return repository.findByEventid(eventId);
     }
+
+    public TicketConfig findById(long ticketConfigId) {
+        return repository.findById(ticketConfigId).orElse(null);
+    }
 }
