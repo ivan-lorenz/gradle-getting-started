@@ -100,7 +100,7 @@ public class HerokuApplication {
 
     Ticket ticket = ticketService.createTicket(buyTicket.getCustomerId(), eventId, buyTicket.getType());
 
-    TicketDTO ticketDTO = new TicketDTO(ticket.getId(), "ES","Euro", 100.0);
+    TicketDTO ticketDTO = new TicketDTO(ticket.getId(), "ES","EUR", 100.0);
 
     return ok(ticketDTO);
   }
