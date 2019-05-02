@@ -14,6 +14,7 @@ public class Venue {
     private long id;
     private String name;
     private String cityCode;
+    private String address;
 
 
     public long getId() {
@@ -38,5 +39,13 @@ public class Venue {
 
     public void setCityCode(String cityCode) {
         this.cityCode = cityCode;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

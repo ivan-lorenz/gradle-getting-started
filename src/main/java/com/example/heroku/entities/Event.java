@@ -12,7 +12,6 @@ public class Event {
     private String name;
     private String description;
     private Date start;
-    private Date end;
     private Category category;
     @ManyToOne
     @JoinColumn(name = "venue_id")
@@ -50,14 +49,6 @@ public class Event {
         this.start = start;
     }
 
-    public Date getEnd() {
-        return end;
-    }
-
-    public void setEnd(Date end) {
-        this.end = end;
-    }
-
     public Category getCategory() {
         return category;
     }
@@ -72,5 +63,18 @@ public class Event {
 
     public void setVenue(Venue venue) {
         this.venue = venue;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Event{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", start=" + start +
+                ", category=" + category +
+                ", venue=" + venue +
+                '}';
     }
 }
