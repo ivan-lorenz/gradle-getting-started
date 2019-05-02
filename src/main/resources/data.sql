@@ -9,3 +9,4 @@ insert into ticket_config (id, type, price, quantity, event_id) values(5, 'NORMA
 insert into ticket_config (id, type, price, quantity, event_id) values(6, 'VIP', 100, 2000, 3);
 insert into ticket_config (id, type, price, quantity, event_id) values(7, 'NORMAL', 50, 3000, 3);
 
+insert into ticket (id, type, customer_id, event_id) values(8, 'NORMAL', 1234, 2);

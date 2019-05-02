@@ -105,4 +105,9 @@ public class HerokuApplication {
   }
 
 
+  @RequestMapping("/tickets/{customerId}")
+  ResponseEntity events(@PathVariable("customerId") long customerId) {
+    return ok().build();
+  }
+
 }
