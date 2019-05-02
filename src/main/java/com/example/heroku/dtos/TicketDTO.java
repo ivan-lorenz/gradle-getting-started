@@ -1,7 +1,5 @@
 package com.example.heroku.dtos;
 
-import com.example.heroku.entities.Venue;
-
 public class TicketDTO {
     private final long ticketId;
     private final String countryCode;
