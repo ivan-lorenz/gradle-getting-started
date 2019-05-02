@@ -5,14 +5,14 @@ import com.example.heroku.entities.Venue;
 public class TicketDTO {
     private final long ticketId;
     private final String countryCode;
-    private final String currency;
+    private final String currencyCode;
     private final double price;
 
 
-    public TicketDTO(long ticketId, String countryCode, String currency, double price) {
+    public TicketDTO(long ticketId, String countryCode, String currencyCode, double price) {
         this.ticketId = ticketId;
         this.countryCode = countryCode;
-        this.currency = currency;
+        this.currencyCode = currencyCode;
         this.price = price;
     }
 
@@ -25,7 +25,7 @@ public class TicketDTO {
     }
 
     public String getCurrency() {
-        return currency;
+        return currencyCode;
     }
 
     public double getPrice() {
