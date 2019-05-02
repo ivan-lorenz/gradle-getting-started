@@ -23,6 +23,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 
@@ -33,6 +34,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Map;
+
+import static org.springframework.http.ResponseEntity.ok;
 
 @Controller
 @SpringBootApplication
@@ -53,6 +56,11 @@ public class HerokuApplication {
     return "index";
   }
 
+  @RequestMapping("/hello")
+  ResponseEntity hello(Map<String, Object> model) {
+    return ok(new Hello("Hello World!"));
+  }
+
   @RequestMapping("/db")
   String db(Map<String, Object> model) {
     try (Connection connection = dataSource.getConnection()) {
@@ -71,6 +79,18 @@ public class HerokuApplication {
     } catch (Exception e) {
       model.put("message", e.getMessage());
       return "error";
+    }
+  }
+
+  class Hello {
+    public String getMessage() {
+      return message;
+    }
+
+    private final String message;
+
+    Hello(String message) {
+      this.message = message;
     }
   }
 
