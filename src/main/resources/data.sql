@@ -1,8 +1,8 @@
 
 insert into venue (id, name, city_code, address) values(1, 'Barcelona FC', 'BCN', 'Barcelona FC address');
 
-insert into event (id, name, description, venue_id, start, category, url_image) values(2, 'La Liga game', 'Reus vs. Getafe', 1, ' 2019-01-01 21:00:00','FOOTBALL_MATCH','https://files.proyectoclubes.com/oviedo/201811/662x372a_19123750real-oviedo-real-sporting_215.jpg');
-insert into event (id, name, description, venue_id, start, category, url_image) values(3, 'La Liga game', 'Madrid football game', 1, ' 2019-01-02 22:00:00','FOOTBALL_MATCH', 'https://images-na.ssl-images-amazon.com/images/I/61BWocKFkeL._SX425_.jpg');
+insert into event (id, name, description, venue_id, start, category, url_image) values(2, 'Reus vs. Getafe', 'Reus vs. Getafe', 1, ' 2019-01-01 21:00:00','FOOTBALL_MATCH','https://files.proyectoclubes.com/oviedo/201811/662x372a_19123750real-oviedo-real-sporting_215.jpg');
+insert into event (id, name, description, venue_id, start, category, url_image) values(3, 'FC Barcelona vs. Real Madrid', 'FC Barcelona vs. Real Madrid', 1, ' 2019-01-02 22:00:00','FOOTBALL_MATCH', 'https://images-na.ssl-images-amazon.com/images/I/61BWocKFkeL._SX425_.jpg');
 
 insert into ticket_config (id, type, price, quantity, event_id) values(4, 'VIP', 100, 1000, 2);
 insert into ticket_config (id, type, price, quantity, event_id) values(5, 'NORMAL', 50, 1, 2);
