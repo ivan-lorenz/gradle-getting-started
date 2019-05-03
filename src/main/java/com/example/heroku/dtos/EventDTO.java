@@ -69,6 +69,6 @@ public class EventDTO {
     }
 
     public static EventDTO from(Event event) {
-        return new EventDTO(event.getId(), event.getName(), event.getStart(), event.getCategory(), VenueDTO.from(event.getVenue()),null, event.getUrlImage(),null);
+        return new EventDTO(event.getId(), event.getName(), event.getStart(), event.getCategory(), VenueDTO.from(event.getVenue(), null),null, event.getUrlImage(),null);
     }
 }
