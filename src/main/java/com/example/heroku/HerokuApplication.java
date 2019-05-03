@@ -108,8 +108,19 @@ public class HerokuApplication {
   ResponseEntity events(@PathVariable("customerId") long customerId) {
     List<Ticket> tickets = ticketService.findByCustomerId(customerId);
 
-    List<CustomerTicketDTO> customerTicketDTO = tickets.stream().map(ticket ->
-     new CustomerTicketDTO(ticket.getId(), EventDTO.from(ticket.getEvent()), ticket.getSeat(), ticket.getQrUrl(), ticket.getSeatZoneUrl())
+    List<CustomerTicketDTO> customerTicketDTO = tickets.stream().map(
+            ticket -> {
+
+                List<Store> stores = storeService.findByVenueId(ticket.getEvent().getVenue().getId());
+                
+                new CustomerTicketDTO(
+                        ticket.getId(),
+                        EventDTO.from(ticket.getEvent()),
+                        ticket.getSeat(), ticket.getQrUrl(),
+                        ticket.getSeatZoneUrl(),
+                        VenueDTO.from(ticket.getEvent().getVenue(),
+                                stores.stream().map(StoreDTO::from).collect(Collectors.toList())));
+            }
     ).collect(Collectors.toList());
 
     return ok(new TicketsDTO(customerTicketDTO));

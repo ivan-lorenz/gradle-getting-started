@@ -6,13 +6,15 @@ public class CustomerTicketDTO {
     private final String seat;
     private final String qrUrl;
     private final String seatZoneUrl;
+    private final VenueDTO venue;
 
-    public CustomerTicketDTO(long id, EventDTO event, String seat, String qrUrl, String seatZoneUrl) {
+    public CustomerTicketDTO(long id, EventDTO event, String seat, String qrUrl, String seatZoneUrl, VenueDTO venue) {
         this.id = id;
         this.event = event;
         this.seat = seat;
         this.qrUrl = qrUrl;
         this.seatZoneUrl = seatZoneUrl;
+        this.venue = venue;
     }
 
     public long getId() {
@@ -33,5 +35,9 @@ public class CustomerTicketDTO {
 
     public String getSeatZoneUrl() {
         return seatZoneUrl;
+    }
+
+    public VenueDTO getVenue() {
+        return venue;
     }
 }
