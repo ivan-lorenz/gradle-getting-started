@@ -1,20 +1,22 @@
 package com.example.heroku.dtos;
 
+import java.util.List;
+
 public class CustomerTicketDTO {
     private final long id;
     private final EventDTO event;
     private final String seat;
     private final String qrUrl;
     private final String seatZoneUrl;
-    private final VenueDTO venue;
+    private final List<StoreDTO> stores;
 
-    public CustomerTicketDTO(long id, EventDTO event, String seat, String qrUrl, String seatZoneUrl, VenueDTO venue) {
+    public CustomerTicketDTO(long id, EventDTO event, String seat, String qrUrl, String seatZoneUrl, List<StoreDTO> stores) {
         this.id = id;
         this.event = event;
         this.seat = seat;
         this.qrUrl = qrUrl;
         this.seatZoneUrl = seatZoneUrl;
-        this.venue = venue;
+        this.stores = stores;
     }
 
     public long getId() {
@@ -37,7 +39,7 @@ public class CustomerTicketDTO {
         return seatZoneUrl;
     }
 
-    public VenueDTO getVenue() {
-        return venue;
+    public List<StoreDTO> getStores() {
+        return stores;
     }
 }

@@ -118,8 +118,7 @@ public class HerokuApplication {
                         EventDTO.from(ticket.getEvent()),
                         ticket.getSeat(), ticket.getQrUrl(),
                         ticket.getSeatZoneUrl(),
-                        VenueDTO.from(ticket.getEvent().getVenue(),
-                                stores.stream().map(StoreDTO::from).collect(Collectors.toList())));
+                        stores.stream().map(StoreDTO::from).collect(Collectors.toList()));
             }
     ).collect(Collectors.toList());
 
