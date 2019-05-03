@@ -88,7 +88,7 @@ public class HerokuApplication {
                       VenueDTO.from(event.getVenue(), null),
                       ticketConfigDTOS,
                       event.getUrlImage(),
-                      event.getDescription());
+                      event.getDescription(), null);
 
             }).collect(Collectors.toList());
   }
@@ -115,10 +115,10 @@ public class HerokuApplication {
 
                 return new CustomerTicketDTO(
                         ticket.getId(),
-                        EventDTO.from(ticket.getEvent()),
+                        EventDTO.from(ticket.getEvent(), stores.stream().map(StoreDTO::from).collect(Collectors.toList())),
                         ticket.getSeat(), ticket.getQrUrl(),
-                        ticket.getSeatZoneUrl(),
-                        stores.stream().map(StoreDTO::from).collect(Collectors.toList()));
+                        ticket.getSeatZoneUrl());
+
             }
     ).collect(Collectors.toList());
 

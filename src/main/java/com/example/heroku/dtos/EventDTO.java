@@ -23,9 +23,11 @@ public class EventDTO {
     private final String urlImage;
     @JsonInclude(JsonInclude.Include.NON_NULL)
     private final String description;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
+    private final List<StoreDTO> stores;
 
 
-    public EventDTO(long id, String name, Date start, Category category, VenueDTO venue, List<TicketConfigDTO> ticketConfig, String urlImage, String description) {
+    public EventDTO(long id, String name, Date start, Category category, VenueDTO venue, List<TicketConfigDTO> ticketConfig, String urlImage, String description, List<StoreDTO> stores) {
         this.id = id;
         this.name = name;
         this.start = start;
@@ -34,6 +36,7 @@ public class EventDTO {
         this.ticketConfig = ticketConfig;
         this.urlImage = urlImage;
         this.description = description;
+        this.stores = stores;
     }
 
     public long getId() {
@@ -68,7 +71,12 @@ public class EventDTO {
         return description;
     }
 
-    public static EventDTO from(Event event) {
-        return new EventDTO(event.getId(), event.getName(), event.getStart(), event.getCategory(), VenueDTO.from(event.getVenue(), null),null, event.getUrlImage(),null);
+    public List<StoreDTO> getStores() {
+        return stores;
+    }
+
+    public static EventDTO from(Event event, List<StoreDTO> stores) {
+        return new EventDTO(event.getId(),
+                event.getName(), event.getStart(), event.getCategory(), VenueDTO.from(event.getVenue(), null),null, event.getUrlImage(),null, stores);
     }
 }
