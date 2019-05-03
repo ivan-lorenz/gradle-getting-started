@@ -4,13 +4,13 @@ import java.util.List;
 
 public class TicketsDTO {
 
-    private final List<TicketDTO> tickets;
+    private final List<CustomerTicketDTO> tickets;
 
-    public TicketsDTO(List<TicketDTO> tickets) {
+    public TicketsDTO(List<CustomerTicketDTO> tickets) {
         this.tickets = tickets;
     }
 
-    public List<TicketDTO> getTickets() {
+    public List<CustomerTicketDTO> getTickets() {
         return tickets;
     }
 }

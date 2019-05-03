@@ -16,6 +16,9 @@ public class Ticket {
     @JoinColumn(name = "event_id")
     private Event event;
 
+    private String seat;
+    private String qrUrl;
+
     public long getId() {
         return id;
     }
@@ -46,5 +49,21 @@ public class Ticket {
 
     public void setEvent(Event event) {
         this.event = event;
+    }
+
+    public String getSeat() {
+        return seat;
+    }
+
+    public void setSeat(String seat) {
+        this.seat = seat;
+    }
+
+    public String getQrUrl() {
+        return qrUrl;
+    }
+
+    public void setQrUrl(String qrUrl) {
+        this.qrUrl = qrUrl;
     }
 }

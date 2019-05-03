@@ -28,7 +28,6 @@ import com.example.heroku.vms.BuyTicket;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -107,7 +106,13 @@ public class HerokuApplication {
 
   @RequestMapping("/tickets/{customerId}")
   ResponseEntity events(@PathVariable("customerId") long customerId) {
-    return ok().build();
+    List<Ticket> tickets = ticketService.findByCustomerId(customerId);
+
+    List<CustomerTicketDTO> customerTicketDTO = tickets.stream().map(ticket ->
+     new CustomerTicketDTO(ticket.getId(), EventDTO.from(ticket.getEvent()), ticket.getSeat(), ticket.getQrUrl())
+    ).collect(Collectors.toList());
+
+    return ok(new TicketsDTO(customerTicketDTO));
   }
 
 }

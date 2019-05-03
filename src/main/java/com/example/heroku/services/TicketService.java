@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Random;
 
 @Service
 public class TicketService {
@@ -38,8 +39,24 @@ public class TicketService {
         ticket.setCustomer_id(customerId);
         ticket.setEvent(event);
         ticket.setType(ticketType);
+        ticket.setSeat(randomSeat());
+        ticket.setQrUrl("https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=www.glovoapp.com");
 
         return repository.save(ticket);
+    }
+
+    public List<Ticket> findByCustomerId(long customerId) {
+        return repository.findByCustomerId(customerId);
+    }
+
+
+    private String randomSeat() {
+        final Random random = new Random();
+        final int intPart = random.nextInt(500);
+        final String abc = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+        final char letter = abc.charAt(random.nextInt(abc.length()));
+
+       return String.format("%d%s",intPart,letter);
     }
 
 

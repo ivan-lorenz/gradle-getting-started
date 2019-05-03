@@ -1,7 +1,9 @@
 package com.example.heroku.dtos;
 
 import com.example.heroku.entities.Category;
+import com.example.heroku.entities.Event;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonInclude;
 
 import java.util.Date;
 import java.util.List;
@@ -14,9 +16,14 @@ public class EventDTO {
     private final Date start;
     private final Category category;
     private final VenueDTO venue;
+
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private final List<TicketConfigDTO> ticketConfig;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private final String urlImage;
+    @JsonInclude(JsonInclude.Include.NON_NULL)
     private final String description;
+
 
     public EventDTO(long id, String name, Date start, Category category, VenueDTO venue, List<TicketConfigDTO> ticketConfig, String urlImage, String description) {
         this.id = id;
@@ -59,5 +66,9 @@ public class EventDTO {
 
     public String getDescription() {
         return description;
+    }
+
+    public static EventDTO from(Event event) {
+        return new EventDTO(event.getId(), event.getName(), event.getStart(), event.getCategory(), VenueDTO.from(event.getVenue()),null, null,null);
     }
 }
