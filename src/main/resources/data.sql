@@ -13,9 +13,8 @@ insert into ticket_config (id, type, price, quantity, event_id) values(7, 'NORMA
 
 insert into ticket (id, type, customer_id, event_id, seat_zone_url) values(8, 'NORMAL', 1234, 2, 'https://i.ibb.co/nc50Fb9/Screenshot-2019-05-03-at-05-08-29.png');
 
-insert into store (id, name, zone_id, venue_id, url_image) values(9, 'McDonald''s', '4D', 1, 'https://www.ishn.com/ext/resources/Issues/2016/September/columns/ISHN_0916_C1_pic.jpg?1472749174');
-insert into store (id, name, zone_id, venue_id, url_image) values(10, 'Kings', '5D', 1, 'https://pbs.twimg.com/profile_images/2094778704/Kings_Logo_CMYK__1_.jpg');
-insert into store (id, name, zone_id, venue_id, url_image) values(11, 'Queens', '5D', 1, 'https://images.deliveryhero.io/image/talabat/restaurants/Queens_Eng_635525259720865559.jpg');
+insert into store (id, name, zone_id, venue_id, url_image) values(3603,' Barca Burger', '4D', 1, 'https://www.ishn.com/ext/resources/Issues/2016/September/columns/ISHN_0916_C1_pic.jpg?1472749174');
+insert into store (id, name, zone_id, venue_id, url_image) values(3606, 'Pho Viet', '5D', 1, 'https://pbs.twimg.com/profile_images/2094778704/Kings_Logo_CMYK__1_.jpg');
 
 insert into product (id, name, price, store_id, url_image) values(12, 'Burger', 10, 9,'https://res.cloudinary.com/hksqkdlah/image/upload/s--or4BUPPr--/c_scale,dpr_2.0,f_auto,h_344,q_auto:low,w_344/24811_sfs-black-bean-burger-50');
 insert into product (id, name, price, store_id, url_image) values(13, 'Coca-cola', 5, 9, 'https://images-na.ssl-images-amazon.com/images/I/81mEIp4PMBL._SL1500_.jpg');
