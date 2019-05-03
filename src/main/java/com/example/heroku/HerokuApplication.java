@@ -109,7 +109,7 @@ public class HerokuApplication {
     List<Ticket> tickets = ticketService.findByCustomerId(customerId);
 
     List<CustomerTicketDTO> customerTicketDTO = tickets.stream().map(ticket ->
-     new CustomerTicketDTO(ticket.getId(), EventDTO.from(ticket.getEvent()), ticket.getSeat(), ticket.getQrUrl())
+     new CustomerTicketDTO(ticket.getId(), EventDTO.from(ticket.getEvent()), ticket.getSeat(), ticket.getQrUrl(), ticket.getSeatZoneUrl())
     ).collect(Collectors.toList());
 
     return ok(new TicketsDTO(customerTicketDTO));

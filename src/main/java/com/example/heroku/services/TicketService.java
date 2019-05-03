@@ -41,7 +41,7 @@ public class TicketService {
         ticket.setType(ticketType);
         ticket.setSeat(randomSeat());
         ticket.setQrUrl("https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=www.glovoapp.com");
-
+        ticket.setSeatZoneUrl("https://i.ibb.co/nc50Fb9/Screenshot-2019-05-03-at-05-08-29.png");
         return repository.save(ticket);
     }
 

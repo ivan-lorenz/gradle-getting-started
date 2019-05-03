@@ -10,7 +10,7 @@ insert into ticket_config (id, type, price, quantity, event_id) values(5, 'NORMA
 insert into ticket_config (id, type, price, quantity, event_id) values(6, 'VIP', 100, 2000, 3);
 insert into ticket_config (id, type, price, quantity, event_id) values(7, 'NORMAL', 50, 3000, 3);
 
-insert into ticket (id, type, customer_id, event_id) values(8, 'NORMAL', 1234, 2);
+insert into ticket (id, type, customer_id, event_id, seat_zone_url) values(8, 'NORMAL', 1234, 2, 'https://i.ibb.co/nc50Fb9/Screenshot-2019-05-03-at-05-08-29.png');
 
 insert into store (id, name, zone_id, venue_id, url_image) values(9, 'McDonald''s', '4D', 1, 'https://www.ishn.com/ext/resources/Issues/2016/September/columns/ISHN_0916_C1_pic.jpg?1472749174');
 insert into store (id, name, zone_id, venue_id, url_image) values(10, 'Kings', '5D', 1, 'https://pbs.twimg.com/profile_images/2094778704/Kings_Logo_CMYK__1_.jpg');

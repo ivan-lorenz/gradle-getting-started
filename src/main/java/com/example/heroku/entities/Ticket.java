@@ -18,6 +18,8 @@ public class Ticket {
 
     private String seat;
     private String qrUrl;
+    private String seatZoneUrl;
+
 
     public long getId() {
         return id;
@@ -65,5 +67,13 @@ public class Ticket {
 
     public void setQrUrl(String qrUrl) {
         this.qrUrl = qrUrl;
+    }
+
+    public String getSeatZoneUrl() {
+        return seatZoneUrl;
+    }
+
+    public void setSeatZoneUrl(String seatZoneUrl) {
+        this.seatZoneUrl = seatZoneUrl;
     }
 }
