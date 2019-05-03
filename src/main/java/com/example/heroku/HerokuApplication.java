@@ -17,13 +17,8 @@
 package com.example.heroku;
 
 import com.example.heroku.dtos.*;
-import com.example.heroku.entities.Event;
-import com.example.heroku.entities.PriceCurreny;
-import com.example.heroku.entities.Ticket;
-import com.example.heroku.entities.TicketConfig;
-import com.example.heroku.services.EventService;
-import com.example.heroku.services.TicketConfigService;
-import com.example.heroku.services.TicketService;
+import com.example.heroku.entities.*;
+import com.example.heroku.services.*;
 import com.example.heroku.vms.BuyTicket;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.SpringApplication;
@@ -53,6 +48,11 @@ public class HerokuApplication {
   @Autowired
   private TicketService  ticketService;
 
+  @Autowired
+  private StoreService storeService;
+
+  @Autowired
+  private ProductService productService;
 
   public static void main(String[] args) throws Exception {
     SpringApplication.run(HerokuApplication.class, args);
@@ -113,6 +113,25 @@ public class HerokuApplication {
     ).collect(Collectors.toList());
 
     return ok(new TicketsDTO(customerTicketDTO));
+  }
+
+
+  @RequestMapping("/venue/{venueId}/stores")
+  ResponseEntity stores(@PathVariable("venueId") long venueId) {
+    List<Store> stores = storeService.findByVenueId(venueId);
+
+
+    List<StoreDTO> collect = stores.stream().map(store -> {
+              List<Product> productsToStore = productService.findByStoreId(store.getId());
+              List<ProductDTO> productDTOs = productsToStore.stream()
+                      .map(product -> new ProductDTO(product.getId(), product.getName(), product.getPrice(), product.getUrlImage()))
+                      .collect(Collectors.toList());
+
+              return new StoreDTO(store.getId(), store.getName(), store.getZoneId(), store.getUrlImage(), productDTOs);
+
+            }
+    ).collect(Collectors.toList());
+    return ok(collect);
   }
 
 }
