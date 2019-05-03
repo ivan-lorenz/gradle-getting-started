@@ -85,7 +85,7 @@ public class HerokuApplication {
                       event.getName(),
                       event.getStart(),
                       event.getCategory(),
-                      VenueDTO.from(event.getVenue()),
+                      VenueDTO.from(event.getVenue(), null),
                       ticketConfigDTOS,
                       event.getUrlImage(),
                       event.getDescription());
@@ -112,8 +112,8 @@ public class HerokuApplication {
             ticket -> {
 
                 List<Store> stores = storeService.findByVenueId(ticket.getEvent().getVenue().getId());
-                
-                new CustomerTicketDTO(
+
+                return new CustomerTicketDTO(
                         ticket.getId(),
                         EventDTO.from(ticket.getEvent()),
                         ticket.getSeat(), ticket.getQrUrl(),
